@@ -1,4 +1,6 @@
 context("Labeled scatter")
+library(flipChartTests)
+library(flipStandardCharts)
 
 set.seed(12358)
 dat <- matrix(rnorm(24), 12, 2,
