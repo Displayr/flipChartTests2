@@ -1,4 +1,4 @@
-[![](https://travis-ci.org/Displayr/flipChartTests.svg?branch=master)](https://travis-ci.org/Displayr/flipChartTests/)
+[![](https://travis-ci.org/Displayr/flipChartTests.svg?branch=master)](https://travis-ci.org/Displayr/flipChartTests2/)
 # flipChartTests2
 
 This package contains only unit tests for flipStandardChart and flipChart. Test outputs are machine-specific, so it is recommended that you use the image files included inside the repository rather than local versions.
