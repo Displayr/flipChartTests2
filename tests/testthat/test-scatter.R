@@ -28,12 +28,12 @@ opts <- c('default' = 'colors = ChartColors(5, "Blues")',
          'categoricalcolor' = 'scatter.colors.as.categorical = TRUE, legend.font.color = "red"',
          'numericalcolor' = 'scatter.colors.as.categorical = FALSE, colors = grey(1:4/5)',
          'nolegend' = 'legend.show = FALSE, colors = "red"',
-         'markerbig' = 'series.marker.size = 20, grid.show = FALSE',
+         'markerbig' = 'marker.size = 20, grid.show = FALSE',
          'thickxgrid' = 'x.grid.width = 10, global.font.color = "red", global.font.family = "Courier"')
 
 n <- length(opts)
 index <- 1
-for (func in c("Scatter", "LabeledScatter"))
+for (func in c("LabeledScatter"))
 {
     for (ii in 1:length(columns.str))
     {
@@ -44,9 +44,9 @@ for (func in c("Scatter", "LabeledScatter"))
             cmd <- paste0("pp <- ", func, "(dat, ", columns.str[ii], ", ", opts[jj], ")")
             expect_error(suppressWarnings(eval(parse(text = cmd))), NA)
 
-            #print(pp)
-            #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
-            expect_true(TestWidget(pp, filestem))
+            print(pp)
+            readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+            #expect_true(TestWidget(pp, filestem))
         })
         index <- index + 1
     }
