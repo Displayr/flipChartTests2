@@ -44,9 +44,9 @@ for (func in c("LabeledScatter"))
             cmd <- paste0("pp <- ", func, "(dat, ", columns.str[ii], ", ", opts[jj], ")")
             expect_error(suppressWarnings(eval(parse(text = cmd))), NA)
 
-            print(pp)
-            readline(prompt=paste0(filestem, ": press [enter] to continue: "))
-            #expect_true(TestWidget(pp, filestem))
+            #print(pp)
+            #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+            expect_true(TestWidget(pp, filestem))
         })
         index <- index + 1
     }
