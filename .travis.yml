@@ -18,30 +18,20 @@ before_install:
   - rcode+="quit(status=1-pass, save='no');"
 
 r_packages:
+  - devtools
   - roxygen2
   - covr
 
 r_github_packages:
   - Displayr/flipDevTools
-  - Displayr/flipExampleData
+  - Displayr/flipChartBasics
 
 script:
-  - rm -f tests/testthat/snapshots/diff/*.png
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
   - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
-  - Rscript -e 'install.packages("webshot"); webshot::install_phantomjs()'
   - if [ -d tests/testthat ]; then
     Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
     fi
-  # Prepare repository to push to github
-  - git config user.name travisCISnapshots
-  - git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests2.git"
-  - git add tests/testthat/snapshots
-  - if [[ $(git status -s tests/testthat/snapshots) ]]; then git commit -m "Snapshots added from Travis build $TRAVIS_BUILD_NUMBER [ci skip]"; fi
-  # Reconnect repository to master branch - this must happen AFTER the commit
-  - git checkout -b temp
-  - git branch -f master temp
-  - if [ 1 ]; then git push origin master; fi # never report error code
 
 notifications:
   slack:
@@ -55,5 +45,6 @@ notifications:
 # Warning notifications and downstream package builds are implemented
 # by calling R functions so they can be updated in this package without
 # committing a new change to .travis.yml in each repository
-after_success:
+after_success: 
   - Rscript -e "require(flipDevTools); NotifyWarnings(); TriggerDownstreamBuilds()"
+  - travis_wait Rscript -e "flipDevTools::CheckCoverage()"
