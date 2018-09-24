@@ -25,8 +25,7 @@ rownames(gapdated) <- sprintf("%02d/01/2017", c(1:10, 21:30))
 
 # Set up combinations to iterate tests through
 charting.funcs <- c("Bar", "Column") #, "Pyramid")
-dat.list <- c("unnamed", "named", "gapped", "missing1", "missing124",
-              "dated", "gapdated")
+dat.list <- c("unnamed", "named", "gapped", "dated", "gapdated")
 opts <- c('g05' = 'bar.gap = 0.05',
           's05' = 'bar.gap = 0.05, type = "Stacked"',
           'g8d' = 'bar.gap = 0.8, data.label.show = TRUE, fit.type = "supsmu"',
