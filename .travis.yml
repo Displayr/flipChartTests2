@@ -13,10 +13,6 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y libgdal-dev libproj-dev python-protobuf libprotoc-dev libprotobuf-dev libv8-dev librsvg2-dev
   - Rscript -e 'update.packages(ask = FALSE)';
-  - rcode="tfile <- tempfile(); capture.output(res<-devtools::test(), file = tfile); out <- readLines(tfile); cat(out, sep = '\n'); "
-  - rcode+="n.fail <- as.numeric(sub('Failed:[[:space:]]', '', out[grep('Failed:[[:space:]]', out)])); "
-  - rcode+="write.csv(as.data.frame(res), file='test_results.csv'); "
-  - rcode+="quit(status = !identical(n.fail, 0), save='no');"
 
 r_packages:
   - devtools
@@ -29,11 +25,8 @@ r_github_packages:
 
 script:
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
-  - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
-  - if [ -d tests/testthat ]; then
-    Rscript --default-packages='datasets,utils,grDevices,graphics,stats,methods' -e "$rcode";
-    fi
-
+  - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz.tar.gz
+  - travis_wait 40 ./runTravisTests.sh
   # Prepare repository to push to github
   - git config user.name travisCISnapshots
   - git remote set-url origin "https://$WTOKEN@github.com/Displayr/flipChartTests2.git"
