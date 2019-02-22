@@ -23,8 +23,6 @@ r_github_packages:
   - Displayr/flipChartBasics
 
 script:
-  # Add command to capture mouse-hover in snapshots
-  - sed -i "108i \    this.mouse.click(opts.zoom * opts.vwidth/2, opts.zoom * opts.vheight/2);" $R_LIBS_USER/webshot/webshot.js
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .
   - R CMD check --as-cran --no-manual --no-build-vignettes --no-tests *.tar.gz
   - travis_wait 40 ./runTravisTests.sh
