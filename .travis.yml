@@ -34,7 +34,7 @@ script:
   # Reconnect repository to master branch - this must happen AFTER the commit
   - git checkout -b temp
   - git branch -f master temp
-  - if [ 1 ]; then git push origin master; fi # never report error code
+  - git push origin master || true  # never report error code
 notifications:
   slack:
     rooms:
