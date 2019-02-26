@@ -14,7 +14,7 @@ filler.text <- "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do e
 
 # Pie charts do not yet have title/subtitle/footers
 dist.funcs <- c("Box", "Bean", "Density", "Histogram", "Violin")
-funcs <- c("Column", "Bar", "Area", "Line", "Scatter", "LabeledScatter", "Radar", "Pie", dist.funcs)
+funcs <- c("Column", "Bar", "Area", "Line", "Scatter", "LabeledScatter", "Radar", dist.funcs)
 test.cases <- c('footer' = 'dat, footer = filler.text',
                 'footer-size5' = 'dat, footer = filler.text, footer.font.size = 5, footer.font.color = "red"',
                 'footer-xtitle' = 'dat, footer = filler.text, x.title = "Some label<br>which goes over two lines", x.title.font.size=20, footer.wrap.nchar = 150',
