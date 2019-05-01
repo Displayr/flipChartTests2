@@ -23,8 +23,8 @@ r_github_packages:
   - Displayr/flipDevTools
   - Displayr/flipFormat
   - Displayr/flipTransformations
-  - Displayr/flipChartBasics
-
+  - Displayr/flipStandardCharts
+  - Displayr/flipChart
 
 script:
   - R CMD build --no-manual --no-build-vignettes --no-resave-data .

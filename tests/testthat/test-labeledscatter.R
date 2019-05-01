@@ -2,6 +2,7 @@ context("Labeled scatter")
 library(flipChartTests)
 library(flipStandardCharts)
 
+RNGversion("3.5.3")
 set.seed(12358)
 dat <- matrix(rnorm(24), 12, 2,
               dimnames=list(stringi::stri_rand_strings(12, 6), c("X", "Y")))
