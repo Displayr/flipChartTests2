@@ -20,5 +20,12 @@ for (n in c(5, 10, 11, 15))
         expect_true(TestWidget(pp, filestem))
         #print(pp)
         #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+        
+        filestem <- sprintf("timeaxis-stackedbar-n%d-s%d", n, step)
+        expect_error(pp <- Bar(xx, type = "Stacked", data.label.show = TRUE), NA)
+        expect_true(TestWidget(pp, filestem))
+        #print(pp)
+        #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+    }
     }
 }
