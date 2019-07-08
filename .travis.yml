@@ -19,7 +19,6 @@ r_packages:
   - covr
 
 r_github_packages:
-  - r-lib/remotes#340
   - Displayr/flipDevTools
   - Displayr/flipChartBasics
 
