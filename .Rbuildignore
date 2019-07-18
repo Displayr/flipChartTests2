@@ -1,4 +1,1 @@
-^.*\.Rproj$
-^\.Rproj\.user$
-.travis.yml
-runTravisTests.sh
+tools/travis_run_before_install.R$
