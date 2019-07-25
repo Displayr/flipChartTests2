@@ -120,20 +120,13 @@ test_that("Venn",
                         list("sets"= list(0, 9, 10), "size" =13),
                         list("sets"= list(2, 7, 8), "size"= 72))
                 pp <- Venn(r.output)
-                expect_true(TestWidget(pp, "venn-simple"))
+                expect_true(TestWidget(pp, "venn-complex"))
                 
                 # Setting font size
                 pp <- Venn(r.output, data.label.font.size = 6)
                 expect_true(TestWidget(pp, "venn-font-size"))
                 
-                # logical input
-                zx = as.data.frame(x[,1:2] >= 1)
-                library(flipFormat)
-                Labels(zx) = Labels(x)[1:2]
-                pp <- Venn(zx)               
-                expect_true(TestWidget(pp, "venn-logical"))
-                
-                # Numeric inptuts
+                # Numeric inputs
                 data("cola", package = "flipExampleData")
                 x <- cola[,c("Q6_A", "Q6_B", "Q6_C", "Q6_D", "Q6_E", "Q6_F")]
                 x <- suppressWarnings(flipData::TidyRawData(x, as.numeric = TRUE))
@@ -144,7 +137,14 @@ test_that("Venn",
                     pp <- Venn(x[,1:i])
                     expect_true(TestWidget(pp, sprintf("venn-%dD-numeric", i)))
                 }
-
+                
+                # logical input
+                zx = as.data.frame(x[,1:2] >= 1)
+                library(flipFormat)
+                Labels(zx) = Labels(x)[1:2]
+                pp <- Venn(zx)               
+                expect_true(TestWidget(pp, "venn-logical"))
+                
                 pp <- Venn(r.output, colors = c("red", "green", "blue"), data.label.font.autocolor = TRUE,
                     data.label.font.family = "Impact")
                 expect_true(TestWidget(pp, "venn-colors"))
