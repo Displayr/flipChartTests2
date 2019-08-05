@@ -14,9 +14,11 @@ Imports: flipChartTests,
 Remotes:
     Displayr/flipChartTests,
     Displayr/flipStandardCharts,
-    Displayr/flipChart
+    Displayr/flipChart,
+    Displayr/flipExampleData
 Suggests:
     testthat,
+    flipExampleData,
     plotly,
     flipChartBasics
 RoxygenNote: 6.0.1
