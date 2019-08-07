@@ -51,3 +51,29 @@ for (func in c("LabeledScatter"))
         index <- index + 1
     }
 }
+
+# Start new loop otherwise opts and columns.str combinations will change in old snapshots
+opts <- c('numformat' = 'x.tick.format = ".2f", y.tick.format = ".1e"',
+          'pctformat' = 'x.tick.format = ".0%", y.tick.format = ".1%"',
+          'dateformat' = 'x.tick.format = "%B %d %Y", y.tick.format = "%d/%m"',
+          'strformat' = 'x.tick.format = "Category", y.tick.format = "Category"')
+n <- length(opts)
+index <- 1
+for (func in c("Scatter", "LabeledScatter"))
+{
+    for (ii in 1:length(columns.str))
+    {
+        jj <- n - (index %% n)
+        filestem <- paste0(tolower(func), "-", names(columns.str)[ii], "-", names(opts)[jj])
+        test_that(filestem, {
+
+            cmd <- paste0("pp <- ", func, "(dat, ", columns.str[ii], ", ", opts[jj], ")")
+            expect_error(suppressWarnings(eval(parse(text = cmd))), NA)
+
+            #print(pp)
+            #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
+            expect_true(TestWidget(pp, filestem))
+        })
+        index <- index + 1
+    }
+}
