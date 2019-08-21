@@ -8,12 +8,9 @@ gapped <- c(1:3, 5, 7, 8:9)
 smallvals <- rep(c(0.0, 0.2, 1.0), 1:3 * 10)
 fewvals <- c(1,1,1,3,10, 2:6)
 
-    pp <- Histogram(xx)
-    expect_true(TestWidget(pp, "hist-bin-default"))
-
 test_that("Default bins",
 {
-    dat <- c("xx", "raredups", "gapped", "smallvals", "fewvals")
+    dat <- c("xx", "dups", "gapped", "smallvals", "fewvals")
     for (dd in dat)
     {
         cmd <- sprintf("Histogram(%s)", dd)
