@@ -53,7 +53,7 @@ for (dat in dat.list)
             
             # Turn off snapshotting, as these are frequently
             # have (invisible) differences
-            expect_true(TestWidget(pp, filestem, threshold = 0.1, delay = 2))    
+            expect_true(TestWidget(pp, filestem, threshold = 0.1, delay = 2, mouse.hover = FALSE))    
         })
     }
 }
