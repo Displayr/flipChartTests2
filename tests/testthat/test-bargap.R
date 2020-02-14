@@ -45,7 +45,7 @@ for (dat in dat.list)
 
                 cmd <- paste0("pp <- ", func, "(", dat, "," , opts[ii], ")")
                 expect_error(eval(parse(text=cmd)), NA)
-                expect_true(TestWidget(pp, filestem))
+                expect_true(TestWidget(pp, filestem, delay = 2))
             })
 
             if (substr(names(opts)[ii], 1, 1) == "g")
@@ -54,7 +54,7 @@ for (dat in dat.list)
                 test_that(filestem, {
                     cmd <- paste0("pp <- SmallMultiples(", dat, ", '", func, "', " , opts[ii], ")")
                     expect_error(eval(parse(text=cmd)), NA)
-                    expect_true(TestWidget(pp, filestem))
+                    expect_true(TestWidget(pp, filestem, delay = 2))
                 })
             }
         }
