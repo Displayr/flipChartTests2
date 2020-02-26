@@ -1,7 +1,7 @@
 Package: flipChartTests2
 Type: Package
 Title: Visual unit tests for flipChart and flipStandardCharts
-Version: 1.0.0
+Version: 1.1.0
 Author: Displayr <opensource@displayr.com>
 Maintainer: Displayr <opensource@displayr.com>
 Description: This package contains no code. It only used for testing.
@@ -12,7 +12,7 @@ Imports: flipChartTests,
          flipStandardCharts,
          flipChart
 Remotes:
-    Displayr/flipChartTests,
+    Displayr/flipChartTests (>= 1.2.0),
     Displayr/flipStandardCharts,
     Displayr/flipChart,
     Displayr/flipExampleData
