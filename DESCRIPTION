@@ -8,11 +8,11 @@ Description: This package contains no code. It only used for testing.
 License: GPL-3
 Depends: R (>= 2.10)
 LazyData: TRUE
-Imports: flipChartTests,
+Imports: flipChartTests (>= 1.2.0),
          flipStandardCharts,
          flipChart
 Remotes:
-    Displayr/flipChartTests (>= 1.2.0),
+    Displayr/flipChartTests,
     Displayr/flipStandardCharts,
     Displayr/flipChart,
     Displayr/flipExampleData
@@ -20,5 +20,7 @@ Suggests:
     testthat,
     flipExampleData,
     plotly,
+    stringi,
     flipChartBasics
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.2
+Encoding: UTF-8
