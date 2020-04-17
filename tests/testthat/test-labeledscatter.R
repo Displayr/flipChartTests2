@@ -7,7 +7,7 @@ set.seed(12358)
 dat <- matrix(rnorm(24), 12, 2,
               dimnames=list(stringi::stri_rand_strings(12, 6), c("X", "Y")))
 zgroup <- rep(LETTERS[1:3], 4)
-logos <- sprintf("https://displayrcors.azureedge.net/images/%s_grey.svg",
+logos <- sprintf("https://displayrcors.displayr.com/images/%s_grey.svg",
                  c("apple", "soup", "bread", "car", "chicken", "rocket",
                    "sickperson", "thumbsup", "elephant", "tree", "weight", "tools"))
 
