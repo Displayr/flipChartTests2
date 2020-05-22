@@ -77,3 +77,62 @@ for (func in c("Scatter", "LabeledScatter"))
         index <- index + 1
     }
 }
+
+dat <- structure(list(q5 = c("Feminine", "Health-conscious", "Innocent",
+"Older", "Open to new experiences", "Rebellious", "Sleepy", "Traditional",
+"Weight-conscious", "Feminine", "Health-conscious", "Innocent",
+"Older", "Open to new experiences", "Rebellious", "Sleepy", "Traditional",
+"Weight-conscious", "Feminine", "Health-conscious", "Innocent",
+"Older", "Open to new experiences", "Rebellious", "Sleepy", "Traditional",
+"Weight-conscious", "Feminine", "Health-conscious", "Innocent",
+"Older", "Open to new experiences", "Rebellious", "Sleepy", "Traditional",
+"Weight-conscious", "Feminine", "Health-conscious", "Innocent",
+"Older", "Open to new experiences", "Rebellious", "Sleepy", "Traditional",
+"Weight-conscious", "Feminine", "Health-conscious", "Innocent",
+"Older", "Open to new experiences", "Rebellious", "Sleepy", "Traditional",
+"Weight-conscious"), `%` = c(6.125, 2, 10.5, 64.625, 22.375,
+25.5, 9.5, 91.25, 0.5, 57.125, 57.75, 21.625, 22.5, 8.875, 4.75,
+23.25, 14.625, 76.125, 22.375, 53.5, 11.375, 5.375, 50.625, 64,
+9.75, 3, 63.875, 8.875, 2.5, 10, 39, 16.75, 17.75, 13.5, 54.75,
+0, 61.5, 57.875, 44.625, 9.875, 16.625, 3.75, 29.75, 3.75, 76.625,
+9.375, 30.625, 6.875, 6.75, 49.25, 44.75, 5.5, 4.375, 40.375),
+    SUMMARY = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 5L, 5L, 5L,
+    5L, 5L, 5L, 5L, 5L, 5L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L
+    ), .Label = c("Coke", "Diet Coke", "Coke Zero", "Pepsi",
+    "Diet Pepsi", "Pepsi Max"), class = "factor"), `z-Statistic` = c(-12.8771918076981,
+    -18.4404507119152, -4.47221089448898, 27.6417129999749, -2.32698196051918,
+    0.112104259695292, -3.7779884321726, 40.740773418202, -23.5251145235949,
+    14.9437368552787, 10.5358595621617, 0.478215172271431, -4.15028275717022,
+    -14.1372820515931, -16.283355997672, 3.64872231752742, -11.3536043112269,
+    15.3516665852145, -5.88269099434869, 8.28919418458265, -6.5094447586997,
+    -14.6658156248808, 11.3479668884978, 20.0398433687628, -6.10463992225897,
+    -18.1668205603603, 8.62605521172934, -6.81226946417321, -13.8888824603993,
+    -0.835885541534322, 17.7278335212906, -0.955844109966775,
+    0.150893281700141, 4.00085308649445, 25.8127242040984, -18.8616968168454,
+    16.0905376765747, 9.23271670740177, 14.9725563973619, -12.9805632632526,
+    -10.5288633705525, -17.839843438055, 7.15368971971144, -18.8535674130722,
+    14.3241382844543, -8.6971935386435, 1.68253058976011, -5.53589921821859,
+    -9.17625409915884, 18.5921144376916, 16.0744763067871, -5.46143832078373,
+    -12.5560472432887, 2.39470802929194)), class = "data.frame", row.names = c(NA,
+-54L), scatter.variable.indices = c(x = 1, y = 2, sizes = 0,
+colors = 3, groups = 3), scatter.mult.yvals = TRUE)
+
+alist <- list(list(type = "Marker border", data = "z-Statistic", threstype = "above threshold",
+    threshold = "3", color = "#3E7DCC", size = NULL, width = 7,
+    offset = NULL, shiftleft = NULL, shiftright = NULL, format = NULL,
+    prefix = NULL, suffix = NULL, font.family = NULL, font.weight = NULL,
+    font.style = NULL), list(type = "Marker border", data = "z-Statistic",
+    threstype = "below threshold", threshold = "-3", color = "#C44E41",
+    size = NULL, width = 7, offset = NULL, shiftleft = NULL,
+    shiftright = NULL, format = NULL, prefix = NULL, suffix = NULL,
+    font.family = NULL, font.weight = NULL, font.style = NULL))
+
+test_that("Check axis order",
+{
+    pp <- Scatter(dat, scatter.sizes.column = 0, scatter.colors.column = 3, 
+            annotation.list = alist)
+    expect_true(TestWidget(pp, "scatter-axis-order"))
+})
+
