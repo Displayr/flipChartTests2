@@ -136,3 +136,42 @@ test_that("Check axis order",
     expect_true(TestWidget(pp, "scatter-axis-order"))
 })
 
+dfChar <- structure(list(x = c(31.9839237228019, NA, 29.527868643733, 13.3040145222493,
+        NA, 15.1168042438377, NA), y = structure(7:1, .Label = c("Investment loan",
+        "Home loan", "Personal loan", "Credit card", "Transaction account",
+        "Overdraft", "Overall NPS"), class = "factor"), sizes = c(8,
+        8, 8, 8, 8, 8, 8), colors = c("Bendigo Bank", "Bendigo Bank",
+        "Bendigo Bank", "Bendigo Bank", "Bendigo Bank", "Bendigo Bank",
+        "Bendigo Bank")), row.names = 71:77, assigned.rownames = TRUE, scatter.variable.indices = c(x = 1,
+        y = 2, sizes = 3, colors = 4, groups = 4), class = "data.frame")
+
+dfFac <- structure(list(Score = c(1.08444117668306, 0.42912468881105,
+        0.506055892157574, -0.564451999093283, 2.41583517848934), `Cost ($)` = c(0.440547872353227,
+        0.693720246937475, 1.44820491038647, 0.0151383003641817, 0.46589754040611
+        ), Age = c(48L, 33L, 32L, 41L, 41L), Class = structure(c(4L,
+        4L, 4L, 4L, 4L), .Label = c("D", "C", "B", "A"), class = "factor"),
+            Sporadic = c(3L, 5L, NA, 8L, 15L), Date = structure(c(17184,
+            17182, 17181, 17178, 17167), class = "Date")), row.names = c("c",
+        "e", "f", "i", "t"), class = "data.frame")
+
+test_that("Show legend",
+{
+    for (func in c("LabeledScatter", "Scatter"))
+    {
+        for (df in c("dfChar", "dfFac"))
+        {
+            filestem <- paste0(tolower(func), "-legend-", df)
+            cmd_def <- paste0("pp <- ", func, "(", df, ")")
+            expect_error(suppressWarnings(eval(parse(text = cmd_def))), NA)
+            expect_true(TestWidget(pp, filestem))
+            
+            filestem <- paste0(tolower(func), "-legendshow-", df)
+            cmd_show <- paste0("pp <- ", func, "(", df, ", legend.show = 'Show')")
+            expect_error(suppressWarnings(eval(parse(text = cmd_show))), NA)
+            expect_true(TestWidget(pp, filestem))
+        }
+    }
+            
+})
+
+
