@@ -136,6 +136,16 @@ test_that("Check axis order",
     expect_true(TestWidget(pp, "scatter-axis-order"))
 })
 
+test_that("Check missing values in colors",
+{
+    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
+        data.label.show = TRUE, scatter.colors.as.categorical = FALSE)
+    expect_true(TestWidget(pp, "scatter-NAs-colors-numeric"))
+    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
+        data.label.show = TRUE, scatter.colors.as.categorical = TRUE)
+    expect_true(TestWidget(pp, "scatter-NAs-colors-categorical"))
+})
+
 dfChar <- structure(list(x = c(31.9839237228019, NA, 29.527868643733, 13.3040145222493,
         NA, 15.1168042438377, NA), y = structure(7:1, .Label = c("Investment loan",
         "Home loan", "Personal loan", "Credit card", "Transaction account",
