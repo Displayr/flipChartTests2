@@ -52,6 +52,16 @@ for (func in c("LabeledScatter"))
     }
 }
 
+test_that("Check missing values in colors",
+{
+    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
+        data.label.show = TRUE, scatter.colors.as.categorical = FALSE)
+    expect_true(TestWidget(pp, "scatter-NAs-colors-numeric"))
+    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
+        data.label.show = TRUE, scatter.colors.as.categorical = TRUE)
+    expect_true(TestWidget(pp, "scatter-NAs-colors-categorical"))
+})
+
 # Start new loop otherwise opts and columns.str combinations will change in old snapshots
 opts <- c('numformat' = 'x.tick.format = ".2f", y.tick.format = ".1e"',
           'pctformat' = 'x.tick.format = ".0%", y.tick.format = ".1%"',
@@ -134,16 +144,6 @@ test_that("Check axis order",
     pp <- Scatter(dat, scatter.sizes.column = 0, scatter.colors.column = 3, 
             annotation.list = alist)
     expect_true(TestWidget(pp, "scatter-axis-order"))
-})
-
-test_that("Check missing values in colors",
-{
-    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
-        data.label.show = TRUE, scatter.colors.as.categorical = FALSE)
-    expect_true(TestWidget(pp, "scatter-NAs-colors-numeric"))
-    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
-        data.label.show = TRUE, scatter.colors.as.categorical = TRUE)
-    expect_true(TestWidget(pp, "scatter-NAs-colors-categorical"))
 })
 
 dfChar <- structure(list(x = c(31.9839237228019, NA, 29.527868643733, 13.3040145222493,
