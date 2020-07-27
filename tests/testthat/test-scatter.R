@@ -54,11 +54,13 @@ for (func in c("LabeledScatter"))
 
 test_that("Check missing values in colors",
 {
-    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
-        data.label.show = TRUE, scatter.colors.as.categorical = FALSE)
+    expect_warning(pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
+        data.label.show = TRUE, scatter.colors.as.categorical = FALSE), 
+        "qualitative palette")
     expect_true(TestWidget(pp, "scatter-NAs-colors-numeric"))
-    pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
-        data.label.show = TRUE, scatter.colors.as.categorical = TRUE)
+    expect_warning(pp <- Scatter(dat, scatter.colors.column = 5, scatter.sizes.column = 0,
+        data.label.show = TRUE, scatter.colors.as.categorical = TRUE),
+        "missing values")
     expect_true(TestWidget(pp, "scatter-NAs-colors-categorical"))
 })
 
