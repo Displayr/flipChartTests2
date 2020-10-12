@@ -27,7 +27,7 @@ r_packages:
 
 r_github_packages:
   - Displayr/flipDevTools
-  - Displayr/flipStandardCharts@DS-2724
+  - Displayr/flipStandardCharts
   - Displayr/flipChart
   - Displayr/flipChartTests
 
