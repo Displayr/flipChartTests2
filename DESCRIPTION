@@ -13,7 +13,7 @@ Imports: flipChartTests (>= 1.2.0),
          flipChart
 Remotes:
     Displayr/flipChartTests,
-    Displayr/flipStandardCharts,
+    Displayr/flipStandardCharts@DS-3083,
     Displayr/flipChart,
     Displayr/flipExampleData
 Suggests:
