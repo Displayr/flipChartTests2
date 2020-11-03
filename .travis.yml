@@ -1,8 +1,7 @@
 language: r
 r:
   - release
-dist: xenial
-sudo: required
+dist: bionic
 cache: packages
 warnings_are_errors: false
 
