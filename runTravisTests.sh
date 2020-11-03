@@ -7,7 +7,8 @@ if [ -d tests/testthat ]; then
     echo "capture.output(res<-devtools::test(), file = tfile, type = 'output')" >> test.R
     echo "out <- readLines(tfile)" >> test.R
     echo "cat(out, sep = '\n')" >> test.R
-    echo "tmp <- unlist(strsplit(split='[[:space:]]+', tail(out, 1)))" >> test.R
+    echo "line.fail <- max(grep('FAIL', out))" >> test.R
+    echo "tmp <- unlist(strsplit(split='[[:space:]]+', out[line.fail]))" >> test.R
     echo "pos.fail <- grep('FAIL', tmp)" >> test.R
     echo "n.fail <- as.numeric(tmp[pos.fail+1])" >> test.R
     echo "res <- as.data.frame(res); out <- data.frame(file = unlist(res[['file']]), warning = unlist(res[['warning']]))" >> test.R 
