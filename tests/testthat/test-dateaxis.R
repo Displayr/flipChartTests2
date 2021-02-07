@@ -1,6 +1,4 @@
 context("Date axis")
-library("flipStandardCharts")
-library("flipChartTests")
 
 date0 <- structure(17759, class = "Date")
 
