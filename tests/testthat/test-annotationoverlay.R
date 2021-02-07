@@ -2,6 +2,7 @@
 # the annotations attached to data labels
 
 context("Annotation overlays")
+library(flipStandardCharts)
 
 data.with.stats <- structure(c(2.75482093663912, 6.06060606060606, 12.6721763085399,
 18.4573002754821, 24.7933884297521, 15.9779614325069, 6.06060606060606,
