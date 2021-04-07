@@ -1,5 +1,6 @@
 context("Histogram")
 library(flipStandardCharts)
+library(flipChartTests)
 
 set.seed(1234)
 xx <- rpois(20, 5)
