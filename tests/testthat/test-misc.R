@@ -23,7 +23,8 @@ test_that("Hover works with 1 row",
 {
     # DS-2508: plotly seems to have problem converting single values to vectors
     pp <- Bar(one.row, data.label.show = T, type = "Stacked")
-    expect_true(TestWidget(pp, "misc-hover-onerow-bar", mouse.xpos = 0.2))
+    expect_true(TestWidget(pp, "misc-hover-onerow-bar", mouse.xpos = 0.2,
+                           threshold = 0.01))
     
     pp <- Column(one.row, data.label.show = T)
     expect_true(TestWidget(pp, "misc-hover-onerow-column"))
