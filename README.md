@@ -31,3 +31,4 @@ To accept new test outputs, simply delete the existing test output inside [tests
 Note that you should use `devtools::test()` rather than `devtools::check()` as `check()` will give the same errors and warning but will not generate output PNG files in the repository.
 
 [![Displayr logo](https://mwmclean.github.io/img/logo-header.png)](https://www.displayr.com)
+
