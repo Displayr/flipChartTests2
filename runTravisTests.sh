@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ -d tests/testthat ]; then
     echo "tfile <- tempfile(tmpdir = '.', fileext = '.txt')" > test.R
     echo "options('testthat.progress.max_fails' = Inf)" >> test.R
