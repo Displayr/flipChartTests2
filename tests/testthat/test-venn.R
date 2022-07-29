@@ -132,7 +132,7 @@ test_that("Venn",
                 x <- suppressWarnings(flipData::TidyRawData(x, as.numeric = TRUE))
                 x[x < 4] <- 0
                 x[x != 0] <- 1
-                for (i in 2:6)
+                for (i in 4:6)
                 {
                     expect_warning(pp <- Venn(x[,1:i]))
                     expect_true(TestWidget(pp, sprintf("venn-%dD-numeric", i), mouse.click = TRUE))
@@ -142,7 +142,7 @@ test_that("Venn",
                 zx = as.data.frame(x[,1:2] >= 1)
                 library(flipFormat)
                 Labels(zx) = Labels(x)[1:2]
-                expect_warning(pp <- Venn(zx))
+                pp <- Venn(zx)
                 expect_true(TestWidget(pp, "venn-logical", mouse.click = TRUE))
                 
                 expect_warning(pp <- Venn(r.output, colors = c("red", "green", "blue"), data.label.font.autocolor = TRUE,
