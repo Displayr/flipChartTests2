@@ -46,7 +46,7 @@ for (func in c("LabeledScatter"))
 
             #print(pp)
             #readline(prompt=paste0(filestem, ": press [enter] to continue: "))
-            expect_true(TestWidget(pp, filestem))
+            expect_true(TestWidget(pp, filestem, delay = 0.2))
         })
         index <- index + 1
     }

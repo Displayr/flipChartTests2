@@ -12,7 +12,7 @@ test_that("Venn",
                     list("sets"= list(0, 1), "size"= 50),
                     list("sets"= list(0, 2), "size"= 0),
                     list("sets"= list(2, 3), "size"= 50))
-                pp <- Venn(r.output)
+                expect_warning(pp <- Venn(r.output))
                 expect_true(TestWidget(pp, "venn-simple", mouse.click = TRUE))
                 
                 # More complicated example
@@ -119,11 +119,11 @@ test_that("Venn",
                         list("sets"= list(0, 7, 11), "size"= 118),
                         list("sets"= list(0, 9, 10), "size" =13),
                         list("sets"= list(2, 7, 8), "size"= 72))
-                pp <- Venn(r.output)
+                expect_warning(pp <- Venn(r.output))
                 expect_true(TestWidget(pp, "venn-complex", mouse.click = TRUE))
                 
                 # Setting font size
-                pp <- Venn(r.output, data.label.font.size = 6)
+                expect_warning(pp <- Venn(r.output, data.label.font.size = 6))
                 expect_true(TestWidget(pp, "venn-font-size", mouse.click = TRUE))
                 
                 # Numeric inputs
@@ -134,7 +134,7 @@ test_that("Venn",
                 x[x != 0] <- 1
                 for (i in 2:6)
                 {
-                    pp <- Venn(x[,1:i])
+                    expect_warning(pp <- Venn(x[,1:i]))
                     expect_true(TestWidget(pp, sprintf("venn-%dD-numeric", i), mouse.click = TRUE))
                 }
                 
@@ -142,14 +142,14 @@ test_that("Venn",
                 zx = as.data.frame(x[,1:2] >= 1)
                 library(flipFormat)
                 Labels(zx) = Labels(x)[1:2]
-                pp <- Venn(zx)               
+                expect_warning(pp <- Venn(zx))
                 expect_true(TestWidget(pp, "venn-logical", mouse.click = TRUE))
                 
-                pp <- Venn(r.output, colors = c("red", "green", "blue"), data.label.font.autocolor = TRUE,
-                    data.label.font.family = "Impact")
+                expect_warning(pp <- Venn(r.output, colors = c("red", "green", "blue"), data.label.font.autocolor = TRUE,
+                    data.label.font.family = "Impact"))
                 expect_true(TestWidget(pp, "venn-colors", mouse.click = TRUE))
-                pp <- Venn(r.output, colors = rainbow(9, start = 0, end =2/3), opacity = 0.8,
+                expect_warning(pp <- Venn(r.output, colors = rainbow(9, start = 0, end =2/3), opacity = 0.8,
                     data.label.font.autocolor = FALSE, data.label.font.color = "#FFFFFF",
-                    data.label.font.family = "Impact")
+                    data.label.font.family = "Impact"))
                 expect_true(TestWidget(pp, "venn-datalabelfontcolor", mouse.click = TRUE))
           })
