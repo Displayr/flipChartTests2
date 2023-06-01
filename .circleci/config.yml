@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  r-packages: displayr/r-packages@dev:168a84e7ecddf30b37be3205a433b00b79ae4d27
+  r-packages: displayr/r-packages@dev:ec595026eef64f3265005fb7159f724006fe2eda
 parameters:
   trigger-message:
     type: string
@@ -37,6 +37,7 @@ workflows:
       - r-packages/test-package:
           executor: << pipeline.parameters.executor >>
           resource-class: small
+          num-executors: 2
           name: TestPackage
           save-snapshots: << pipeline.parameters.save-snapshots >>
           requires:

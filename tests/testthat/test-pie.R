@@ -1,6 +1,7 @@
 context("Pie")
 library(flipStandardCharts)
 library(flipChartBasics)
+library(flipChartTests)
 
 set.seed(12345)
 unnamed <- 1:10

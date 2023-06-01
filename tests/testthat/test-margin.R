@@ -1,4 +1,6 @@
 context("Margin text")
+library(flipStandardCharts)
+library(flipChartTests)
 
 # A simple dataset - here we are just checking the positioning
 # of the margin text, not data processing

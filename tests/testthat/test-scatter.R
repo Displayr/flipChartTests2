@@ -1,6 +1,7 @@
 context("Scatter plot")
 library("flipChartBasics")
 library("flipStandardCharts")
+library("flipChartTests")
 
 # Set up dataframe containing different types of data types
 set.seed(1234)

@@ -1,4 +1,6 @@
 context("Venn")
+library(flipStandardCharts)
+library(flipChartTests)
 
 test_that("Venn",
           {
