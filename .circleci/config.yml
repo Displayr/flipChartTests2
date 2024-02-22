@@ -16,7 +16,7 @@ parameters:
     default: ""
   executor:
     type: enum
-    enum: [nightly, rocker, machine, rocker_geo]
+    enum: [nightly, rocker, machine]
     default: nightly
   save-snapshots:
     type: boolean
@@ -25,22 +25,23 @@ parameters:
 workflows:
   build-and-check-R-package:
     jobs:
-      - r-packages/build_and_check_package:
+      - r-packages/build-and-check-package:
           executor: << pipeline.parameters.executor >>
           resource-class: small
           name: BuildAndCheckPackage
           context:
             - rviz_packages
-          remote_deps: << pipeline.parameters.remote-deps >>
-          separate_test_job: true
-          save_snapshots: false
-      - r-packages/test_package:
+          remote-deps: << pipeline.parameters.remote-deps >>
+          separate-test-job: true
+          save-snapshots: false
+      - r-packages/test-package:
           executor: << pipeline.parameters.executor >>
-          resource_class: small
-          num_executors: 2
+          resource-class: small
+          num-executors: 2
           name: TestPackage
-          save_snapshots: << pipeline.parameters.save-snapshots >>
+          save-snapshots: << pipeline.parameters.save-snapshots >>
           requires:
             - BuildAndCheckPackage
           context:
             - rviz_packages
+
