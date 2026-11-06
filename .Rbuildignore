@@ -5,3 +5,5 @@
 runTravisTests.sh
 tools/travis_run_before_install.R$
 .circleci
+^AGENTS\.md$
+^CLAUDE\.md$
